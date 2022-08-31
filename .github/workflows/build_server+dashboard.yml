@@ -22,6 +22,7 @@ jobs:
       
       - name: Installs dependencies and builds both codebases
         run: |
+          cd software/server
           npm i
           npm run build
           cd dashboard
