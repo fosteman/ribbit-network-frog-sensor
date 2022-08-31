@@ -117,3 +117,16 @@ export const connectToNetwork = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const activeConnections = async (req: Request, res: Response) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
+  console.log("[WIFI] /activeConnections");
+
+  wifi.getCurrentConnections((error, currentConnections) => {
+    if (error) {
+      return res.status(500).json(error);
+    }
+    return res.json(currentConnections);
+  });
+};

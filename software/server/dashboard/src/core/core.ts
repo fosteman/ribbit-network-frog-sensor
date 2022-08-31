@@ -33,6 +33,7 @@ class Core {
     makeAutoObservable(this);
 
     this.getSettings();
+    this.activeConnections();
   }
 
   app: FirebaseApp;
@@ -72,6 +73,16 @@ class Core {
   }
 
   connectedTo?: Network;
+
+  activeConnections() {
+    return axios
+      .get<Network[]>(`${serverURL}/activeConnections`)
+      .then((res) => {
+        console.log("Active wifi connections: ", res.data);
+        this.connectedTo = res.data[0];
+        return this.connectedTo;
+      });
+  }
 
   connectToNetwork(network: { ssid: string; password?: string }) {
     return axios
