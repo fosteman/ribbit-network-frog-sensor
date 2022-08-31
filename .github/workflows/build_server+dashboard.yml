@@ -22,8 +22,8 @@ jobs:
       
       - name: Installs dependencies and builds both codebases
         run: |
-          npm ci
+          npm i
           npm run build
           cd dashboard
-          npm ci
+          npm i
           npm run build
