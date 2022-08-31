@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "firebaseui/dist/firebaseui.css";
-
+import { SnackbarProvider } from "notistack";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "@emotion/react";
@@ -11,9 +11,11 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <ThemeProvider theme={{}}>
-    <App />
-  </ThemeProvider>
+  <SnackbarProvider>
+    <ThemeProvider theme={{}}>
+      <App />
+    </ThemeProvider>
+  </SnackbarProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

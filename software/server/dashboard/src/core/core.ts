@@ -2,10 +2,14 @@ import { initializeApp, FirebaseApp } from "firebase/app";
 import { getAnalytics, Analytics } from "firebase/analytics";
 import auth, { Auth, getAuth } from "firebase/auth";
 import { getFirestore, Firestore } from "firebase/firestore";
-import { makeAutoObservable } from "mobx";
+import { configure, makeAutoObservable, toJS } from "mobx";
 import axios from "axios";
 
-import { Settings } from "./types";
+import { Network, Settings } from "./types";
+
+configure({
+  enforceActions: "never",
+});
 
 const firebaseConfig = {
   apiKey: "AIzaSyD35dn4IMvA7-Tul_OPeBGerHPHJfqypSk",
@@ -58,6 +62,24 @@ class Core {
 
     this.loading = false;
     return settings;
+  }
+
+  networks: Network[] = [];
+
+  async getNetworks() {
+    this.networks = (await axios.get(`${serverURL}/scanNetworks`)).data;
+    return this.networks;
+  }
+
+  connectedTo?: Network;
+
+  connectToNetwork(network: { ssid: string; password?: string }) {
+    return axios
+      .post<Network[]>(`${serverURL}/connectToNetwork`, network)
+      .then((res) => {
+        this.connectedTo = res.data[0];
+        return this.connectedTo;
+      });
   }
 }
 

@@ -15,3 +15,15 @@ export interface Settings {
   hostname: string;
   frequency: string;
 }
+
+export interface Network {
+  bssid: string;
+  channel: number;
+  frequency: number;
+  mac: string;
+  quality: number;
+  security: string;
+  security_flags: string[];
+  signal_level: string;
+  ssid: string;
+}

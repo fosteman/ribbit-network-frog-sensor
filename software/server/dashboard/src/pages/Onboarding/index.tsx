@@ -21,7 +21,7 @@ import Authentication from "./Authentication";
 import Configuration from "./Configuration";
 import TestFlight from "./TestFlight";
 import Finish from "./Finish";
-import Welcome from "./Welcome";
+import Welcome from "./Connectivity";
 
 export default observer(() => {
   return (

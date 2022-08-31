@@ -3,6 +3,12 @@ import { db } from "./database";
 import * as fs from "fs";
 const exec = require("child_process").exec;
 
+const wifi = require("node-wifi");
+
+wifi.init({
+  iface: null,
+});
+
 export const postWifiSettings = async (req: Request, res: Response) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
@@ -73,4 +79,41 @@ const restartInterface = () => {
       // }
     });
   });
+};
+
+export const scanNetworks = async (req: Request, res: Response) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
+  console.log("[WIFI] /scanNetworks");
+
+  wifi.scan((error, networks) => {
+    if (error) {
+      return res.status(500).json(error);
+    }
+    return res.json(networks);
+  });
+};
+
+export const connectToNetwork = async (req: Request, res: Response) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
+  console.log("[WIFI] /connectToNetwork");
+
+  console.log(req.body);
+
+  const connected = await wifi.connect({
+    ssid: req.body.ssid,
+    password: req.body.password,
+  });
+
+  if (connected && typeof connected == "string") {
+    return res.status(500).send(connected);
+  } else {
+    wifi.getCurrentConnections((error, currentConnections) => {
+      if (error) {
+        return res.status(500).json(error);
+      }
+      return res.json(currentConnections);
+    });
+  }
 };
