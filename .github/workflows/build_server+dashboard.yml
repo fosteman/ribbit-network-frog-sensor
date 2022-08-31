@@ -22,6 +22,7 @@ jobs:
       
       - name: Installs dependencies and builds both codebases
         run: |
+          $env:CI="false"
           cd software/server
           npm i
           npm run build
