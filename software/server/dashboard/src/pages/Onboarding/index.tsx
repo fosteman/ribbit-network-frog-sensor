@@ -34,7 +34,7 @@ export default observer(() => {
       justifyContent={"center"}
       alignContent={"center"}
     >
-      <Grid xs={12} sm={8} md={6} lg={4} item>
+      <Grid xs={12} sm={12} md={8} lg={6} item>
         <Paper sx={{ padding: 2 }}>
           <Stepper activeStep={onboardingCore.onboardingStep}>
             <Step key={0}>

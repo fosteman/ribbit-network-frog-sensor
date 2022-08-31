@@ -68,6 +68,7 @@ export default observer(() => {
             onChange={(e) => setPassword(e.target.value)}
             sx={{ width: "100%" }}
             label={"Password"}
+            error={password.length < 8}
           />
         )}
       </Box>
