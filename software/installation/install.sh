@@ -6,6 +6,9 @@ sudo apt install nginx hostapd dnsmasq net-tools git -y
 sudo apt-get install npm -y
 sudo npm install -g n
 sudo n stable
+npm install pm2 -g
+
+hash -r
 
 echo "Prepping dnsmasq.conf"
 sudo cp ./dnsmasq.conf /etc/dnsmasq.conf

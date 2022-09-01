@@ -10,4 +10,4 @@ sudo create_ap -n wlan0 FROG --no-virt --no-dnsmasq --redirect-to-localhost --da
 
 sudo ifconfig wlan0 192.168.12.1
 
-sudo pm2 ../server/build/index.js
+sudo pm2 start ../server/build/index.js
