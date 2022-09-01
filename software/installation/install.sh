@@ -14,6 +14,7 @@ sudo cp ./dnsmasq.conf /etc/dnsmasq.conf
 #cp ./nginx.conf /etc/nginx/sites-enabled/default
 
 echo "Prepping hostapd"
+sudo rfkill unblock all
 git clone https://github.com/oblique/create_ap
 cd create_ap
 sudo make install
