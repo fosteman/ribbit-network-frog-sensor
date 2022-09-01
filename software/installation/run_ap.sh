@@ -1,7 +1,7 @@
 killall create_ap
 
 sudo service dnsmasq restart
-sudo service nginx restart
+#sudo service nginx restart
 
 sudo service systemd-resolved stop
 sudo ifconfig wlan0 down
