@@ -28,6 +28,6 @@ app.post("/updateWifiSettings", wifi_1.postWifiSettings);
 app.get("/scanNetworks", wifi_1.scanNetworks);
 app.post("/connectToNetwork", wifi_1.connectToNetwork);
 app.get("/activeConnections", wifi_1.activeConnections);
-app.listen(80, "127.0.0.1", function () {
+app.listen(80, "0.0.0.0", function () {
     console.log("\u26A1\uFE0F[server]: Server is running at port ".concat(port));
 });
