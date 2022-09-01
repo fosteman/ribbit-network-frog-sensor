@@ -16,6 +16,7 @@ app.use(cors());
 const port = process.env.PORT || 80;
 
 app.use("/", express.static("dashboard/build"));
+app.use("/captiveportal", express.static("dashboard/build"));
 app.use(express.json());
 
 app.get("/heartbeat", (req: Request, res: Response) => {
