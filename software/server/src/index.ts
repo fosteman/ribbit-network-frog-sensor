@@ -37,6 +37,6 @@ app.get("/scanNetworks", scanNetworks);
 app.post("/connectToNetwork", connectToNetwork);
 app.get("/activeConnections", activeConnections);
 
-app.listen(80, "192.168.12.1", () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+app.listen(80, "127.0.0.1", () => {
+  console.log(`⚡️[server]: Server is running at port ${port}`);
 });
