@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm version patch && react-scripts build",
     "deploy": "npm version patch && npm run build && firebase deploy --only hosting"
   },
   "eslintConfig": {
