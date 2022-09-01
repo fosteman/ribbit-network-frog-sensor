@@ -19,4 +19,6 @@ cd create_ap
 sudo make install
 
 #echo "Preparing frontend"
+cd ../server
+npm i
 #cp -R ../server/dashboard/build/* /var/www/html/
