@@ -13,7 +13,10 @@ cp ./dnsmasq.conf /etc/dnsmasq.conf
 echo "Prepping nginx config"
 cp ./nginx.conf /etc/nginx/sites-enabled/default
 
+echo "Prepping hostapd"
 git clone https://github.com/oblique/create_ap
 cd create_ap
 sudo make install
 
+echo "Preparing frontend"
+cp -R ../server/dashboard/build/* /var/www/html/
