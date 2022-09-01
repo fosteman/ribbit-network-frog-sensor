@@ -27,5 +27,6 @@
     "start": "node build/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/index.js\"",
     "build_all": "npm i && npm run build && cd dashboard && npm i && npm run build"
-  }
+  },
+  "version": "0.0.1"
 }
