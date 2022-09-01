@@ -1,4 +1,4 @@
-killall create_ap
+sudo killall create_ap
 
 sudo ifconfig wlan0 192.168.12.1
 
