@@ -21,7 +21,7 @@ const firebaseConfig = {
   measurementId: "G-8FFJCG61RL",
 };
 
-const serverURL = "http://frog.local";
+const serverURL = window.location.host || "http://frog.local";
 
 class Core {
   constructor() {
