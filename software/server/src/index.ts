@@ -6,6 +6,7 @@ import cors from "cors";
 import {
   activeConnections,
   connectToNetwork,
+  disconnectWifi,
   postWifiSettings,
   scanNetworks,
   scanNetworksOffline,
@@ -43,6 +44,7 @@ app.get("/activeConnections", activeConnections);
 app.listen(80, "0.0.0.0", () => {
   scanNetworksOffline();
 
+  disconnectWifi();
   console.log("Starting a hotspot...");
   exec(
     "sudo create_ap -n wlan0 FROG --no-virt --no-dnsmasq --redirect-to-localhost --daemon"

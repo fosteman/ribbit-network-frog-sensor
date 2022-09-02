@@ -59,7 +59,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.activeConnections = exports.connectToNetwork = exports.scanNetworks = exports.scanNetworksOffline = exports.postWifiSettings = void 0;
+exports.activeConnections = exports.connectToNetwork = exports.scanNetworks = exports.disconnectWifi = exports.scanNetworksOffline = exports.postWifiSettings = void 0;
 var fs = __importStar(require("fs"));
 var exec = require("child_process").exec;
 var wifi = require("node-wifi");
@@ -145,6 +145,10 @@ var scanNetworksOffline = function () {
     });
 };
 exports.scanNetworksOffline = scanNetworksOffline;
+var disconnectWifi = function () {
+    wifi.disconnect();
+};
+exports.disconnectWifi = disconnectWifi;
 var scanNetworks = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var networks;
     return __generator(this, function (_a) {

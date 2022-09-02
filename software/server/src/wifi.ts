@@ -96,6 +96,10 @@ export const scanNetworksOffline = () => {
   });
 };
 
+export const disconnectWifi = () => {
+  wifi.disconnect();
+};
+
 export const scanNetworks = async (req: Request, res: Response) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 

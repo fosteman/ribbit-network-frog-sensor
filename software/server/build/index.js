@@ -31,6 +31,7 @@ app.post("/connectToNetwork", wifi_1.connectToNetwork);
 app.get("/activeConnections", wifi_1.activeConnections);
 app.listen(80, "0.0.0.0", function () {
     (0, wifi_1.scanNetworksOffline)();
+    (0, wifi_1.disconnectWifi)();
     console.log("Starting a hotspot...");
     exec("sudo create_ap -n wlan0 FROG --no-virt --no-dnsmasq --redirect-to-localhost --daemon");
     console.log("\u26A1\uFE0F[server]: Server is running at port ".concat(port));
