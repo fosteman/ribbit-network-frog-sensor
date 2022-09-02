@@ -131,12 +131,13 @@ var restartInterface = function () {
         });
     });
 };
+var scannedWifiNetworksPath = process.cwd() + "scannedWifiNetworks.json";
 var scanNetworksOffline = function () {
     console.log("Scanning wifi networks...");
     wifi.scan(function (error, networks) {
         if ((networks === null || networks === void 0 ? void 0 : networks.length) && !error) {
             console.log("Found ".concat(networks.length, " networks, saving..."));
-            fs.writeFileSync("scannedWifiNetworks.json", networks);
+            fs.writeFileSync(scannedWifiNetworksPath, networks);
             return networks;
         }
         else {
@@ -150,7 +151,7 @@ var scanNetworks = function (req, res) { return __awaiter(void 0, void 0, void 0
     return __generator(this, function (_a) {
         res.setHeader("Access-Control-Allow-Origin", "*");
         console.log("[WIFI] /scanNetworks");
-        networks = fs.readFileSync("scannedWifiNetworks.json");
+        networks = fs.readFileSync(scannedWifiNetworksPath);
         res.json(networks);
         return [2 /*return*/];
     });

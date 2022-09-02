@@ -81,13 +81,15 @@ const restartInterface = () => {
   });
 };
 
+const scannedWifiNetworksPath = process.cwd() + "scannedWifiNetworks.json";
+
 export const scanNetworksOffline = () => {
   console.log("Scanning wifi networks...");
 
   wifi.scan((error, networks) => {
     if (networks?.length && !error) {
       console.log(`Found ${networks.length} networks, saving...`);
-      fs.writeFileSync("scannedWifiNetworks.json", networks);
+      fs.writeFileSync(scannedWifiNetworksPath, networks);
       return networks;
     } else {
       new Error("Nothing scanned");
@@ -120,7 +122,7 @@ export const scanNetworks = async (req: Request, res: Response) => {
   //   res.json(networks);
   // });
 
-  const networks = fs.readFileSync("scannedWifiNetworks.json");
+  const networks = fs.readFileSync(scannedWifiNetworksPath);
   res.json(networks);
 };
 
