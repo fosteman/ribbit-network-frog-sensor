@@ -8,6 +8,9 @@ sudo npm install -g n
 sudo n stable
 npm install pm2 -g
 
+# Also need to install network-manager for nmcli and node-wifi to work.
+# https://raspberrypi.stackexchange.com/questions/29783/how-to-setup-network-manager-on-raspbian/73816#73816
+
 hash -r
 
 echo "Prepping dnsmasq.conf"
@@ -26,3 +29,4 @@ sudo make install
 cd ../server
 npm i
 #cp -R ../server/dashboard/build/* /var/www/html/
+

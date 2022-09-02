@@ -59,7 +59,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.activeConnections = exports.connectToNetwork = exports.scanNetworks = exports.postWifiSettings = void 0;
+exports.activeConnections = exports.connectToNetwork = exports.scanNetworks = exports.scanNetworksOffline = exports.postWifiSettings = void 0;
 var fs = __importStar(require("fs"));
 var exec = require("child_process").exec;
 var wifi = require("node-wifi");
@@ -131,16 +131,27 @@ var restartInterface = function () {
         });
     });
 };
+var scanNetworksOffline = function () {
+    console.log("Scanning wifi networks...");
+    wifi.scan(function (error, networks) {
+        if (networks.length && !error) {
+            console.log("Found ".concat(networks.length, " networks, saving..."));
+            fs.writeFileSync("scannedWifiNetworks.json", networks);
+            return networks;
+        }
+        else {
+            new Error("Nothing scanned");
+        }
+    });
+};
+exports.scanNetworksOffline = scanNetworksOffline;
 var scanNetworks = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var networks;
     return __generator(this, function (_a) {
         res.setHeader("Access-Control-Allow-Origin", "*");
         console.log("[WIFI] /scanNetworks");
-        wifi.scan(function (error, networks) {
-            if (error) {
-                return res.status(500).json(error);
-            }
-            return res.json(networks);
-        });
+        networks = fs.readFileSync("scannedWifiNetworks.json");
+        res.json(networks);
         return [2 /*return*/];
     });
 }); };

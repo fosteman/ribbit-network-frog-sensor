@@ -29,5 +29,6 @@ app.get("/scanNetworks", wifi_1.scanNetworks);
 app.post("/connectToNetwork", wifi_1.connectToNetwork);
 app.get("/activeConnections", wifi_1.activeConnections);
 app.listen(80, "0.0.0.0", function () {
+    (0, wifi_1.scanNetworksOffline)();
     console.log("\u26A1\uFE0F[server]: Server is running at port ".concat(port));
 });

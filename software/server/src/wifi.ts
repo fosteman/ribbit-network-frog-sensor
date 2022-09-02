@@ -81,17 +81,47 @@ const restartInterface = () => {
   });
 };
 
+export const scanNetworksOffline = () => {
+  console.log("Scanning wifi networks...");
+
+  wifi.scan((error, networks) => {
+    if (networks.length && !error) {
+      console.log(`Found ${networks.length} networks, saving...`);
+      fs.writeFileSync("scannedWifiNetworks.json", networks);
+      return networks;
+    } else {
+      new Error("Nothing scanned");
+    }
+  });
+};
+
 export const scanNetworks = async (req: Request, res: Response) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
   console.log("[WIFI] /scanNetworks");
 
-  wifi.scan((error, networks) => {
-    if (error) {
-      return res.status(500).json(error);
-    }
-    return res.json(networks);
-  });
+  // momentarily kill ap and setup wlan0 interface for scanning
+  // exec("sudo killall create_ap");
+
+  // wifi.scan((error, networks) => {
+  //   // restart the AP
+  //   exec(
+  //     "sudo create_ap -n wlan0 FROG --no-virt --no-dnsmasq --redirect-to-localhost --daemon",
+  //     (error, stdout, stderr) => {
+  //       console.log("(ifup) ERROR: " + error);
+  //       console.log("(ifup) STDERR: " + stderr);
+  //       console.log("(ifup) STDOUT: " + stdout);
+  //     }
+  //   );
+  //
+  //   if (error) {
+  //     return res.status(500).json(error);
+  //   }
+  //   res.json(networks);
+  // });
+
+  const networks = fs.readFileSync("scannedWifiNetworks.json");
+  res.json(networks);
 };
 
 export const connectToNetwork = async (req: Request, res: Response) => {

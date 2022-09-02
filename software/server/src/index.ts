@@ -8,6 +8,7 @@ import {
   connectToNetwork,
   postWifiSettings,
   scanNetworks,
+  scanNetworksOffline,
 } from "./wifi";
 dotenv.config();
 
@@ -38,5 +39,7 @@ app.post("/connectToNetwork", connectToNetwork);
 app.get("/activeConnections", activeConnections);
 
 app.listen(80, "0.0.0.0", () => {
+  scanNetworksOffline();
+
   console.log(`⚡️[server]: Server is running at port ${port}`);
 });
