@@ -131,7 +131,7 @@ var restartInterface = function () {
         });
     });
 };
-var scannedWifiNetworksPath = process.cwd() + "scannedWifiNetworks.json";
+var scannedWifiNetworksPath = process.cwd() + "/scannedWifiNetworks.json";
 var scanNetworksOffline = function () {
     console.log("Scanning wifi networks...");
     wifi.scan(function (error, networks) {

@@ -81,7 +81,7 @@ const restartInterface = () => {
   });
 };
 
-const scannedWifiNetworksPath = process.cwd() + "scannedWifiNetworks.json";
+const scannedWifiNetworksPath = process.cwd() + "/scannedWifiNetworks.json";
 
 export const scanNetworksOffline = () => {
   console.log("Scanning wifi networks...");
