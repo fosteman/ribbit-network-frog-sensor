@@ -102,6 +102,7 @@ export default observer(() => {
               })
               .then((res) => {
                 if (res) {
+                  core.activeConnections();
                   enqueueSnackbar(`Connected to ${res.ssid}`, {
                     variant: "success",
                   });
