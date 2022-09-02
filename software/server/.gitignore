@@ -10,3 +10,5 @@ node_modules/
 
 database.sqlite
 vcs.xml
+
+scannedWifiNetworks.json
