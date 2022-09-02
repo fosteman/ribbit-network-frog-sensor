@@ -138,7 +138,6 @@ var scanNetworksOffline = function () {
         if ((networks === null || networks === void 0 ? void 0 : networks.length) && !error) {
             console.log("Found ".concat(networks.length, " networks, saving..."));
             fs.writeFileSync(scannedWifiNetworksPath, JSON.stringify(networks));
-            console.log(fs.readFileSync(scannedWifiNetworksPath));
         }
         else {
             new Error("Nothing scanned");
@@ -151,7 +150,7 @@ var scanNetworks = function (req, res) { return __awaiter(void 0, void 0, void 0
     return __generator(this, function (_a) {
         res.setHeader("Access-Control-Allow-Origin", "*");
         console.log("[WIFI] /scanNetworks");
-        networks = fs.readFileSync(scannedWifiNetworksPath);
+        networks = fs.readFileSync(scannedWifiNetworksPath).toJSON();
         res.json(networks);
         return [2 /*return*/];
     });

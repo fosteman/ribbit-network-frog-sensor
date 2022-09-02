@@ -90,8 +90,6 @@ export const scanNetworksOffline = () => {
     if (networks?.length && !error) {
       console.log(`Found ${networks.length} networks, saving...`);
       fs.writeFileSync(scannedWifiNetworksPath, JSON.stringify(networks));
-
-      console.log(fs.readFileSync(scannedWifiNetworksPath));
     } else {
       new Error("Nothing scanned");
     }
@@ -123,7 +121,7 @@ export const scanNetworks = async (req: Request, res: Response) => {
   //   res.json(networks);
   // });
 
-  const networks = fs.readFileSync(scannedWifiNetworksPath);
+  const networks = fs.readFileSync(scannedWifiNetworksPath).toJSON();
   res.json(networks);
 };
 
