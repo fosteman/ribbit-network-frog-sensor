@@ -12,6 +12,8 @@ import {
 } from "./wifi";
 dotenv.config();
 
+const exec = require("child_process").exec;
+
 const app: Express = express();
 app.use(cors());
 const port = process.env.PORT || 80;
@@ -40,6 +42,11 @@ app.get("/activeConnections", activeConnections);
 
 app.listen(80, "0.0.0.0", () => {
   scanNetworksOffline();
+
+  console.log("Starting a hotspot...");
+  exec(
+    "sudo create_ap -n wlan0 FROG --no-virt --no-dnsmasq --redirect-to-localhost --daemon"
+  );
 
   console.log(`⚡️[server]: Server is running at port ${port}`);
 });

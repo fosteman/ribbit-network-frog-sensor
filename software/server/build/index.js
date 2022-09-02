@@ -10,6 +10,7 @@ var settings_1 = require("./settings");
 var cors_1 = __importDefault(require("cors"));
 var wifi_1 = require("./wifi");
 dotenv_1.default.config();
+var exec = require("child_process").exec;
 var app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 var port = process.env.PORT || 80;
@@ -30,5 +31,7 @@ app.post("/connectToNetwork", wifi_1.connectToNetwork);
 app.get("/activeConnections", wifi_1.activeConnections);
 app.listen(80, "0.0.0.0", function () {
     (0, wifi_1.scanNetworksOffline)();
+    console.log("Starting a hotspot...");
+    exec("sudo create_ap -n wlan0 FROG --no-virt --no-dnsmasq --redirect-to-localhost --daemon");
     console.log("\u26A1\uFE0F[server]: Server is running at port ".concat(port));
 });
