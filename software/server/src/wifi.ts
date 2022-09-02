@@ -88,8 +88,7 @@ export const scanNetworksOffline = () => {
 
   wifi.scan((error, networks) => {
     if (networks?.length && !error) {
-      // fs.writeFileSync(scannedWifiNetworksPath, networks);
-      fs.writeFile(scannedWifiNetworksPath, networks, () => {
+      fs.writeFile("scannedWifiNetworks.json", networks, () => {
         console.log(`Found ${networks.length} networks, saving...`);
         console.log(fs.readFileSync(scannedWifiNetworksPath));
       });

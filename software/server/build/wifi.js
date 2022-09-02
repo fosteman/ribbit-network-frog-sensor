@@ -136,8 +136,7 @@ var scanNetworksOffline = function () {
     console.log("Scanning wifi networks...");
     wifi.scan(function (error, networks) {
         if ((networks === null || networks === void 0 ? void 0 : networks.length) && !error) {
-            // fs.writeFileSync(scannedWifiNetworksPath, networks);
-            fs.writeFile(scannedWifiNetworksPath, networks, function () {
+            fs.writeFile("scannedWifiNetworks.json", networks, function () {
                 console.log("Found ".concat(networks.length, " networks, saving..."));
                 console.log(fs.readFileSync(scannedWifiNetworksPath));
             });
