@@ -146,7 +146,7 @@ var scanNetworksOffline = function () {
 };
 exports.scanNetworksOffline = scanNetworksOffline;
 var disconnectWifi = function () {
-    wifi.disconnect();
+    exec("nmcli device disconnect wlan0");
 };
 exports.disconnectWifi = disconnectWifi;
 var scanNetworks = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {

@@ -97,7 +97,7 @@ export const scanNetworksOffline = () => {
 };
 
 export const disconnectWifi = () => {
-  wifi.disconnect();
+  exec("nmcli device disconnect wlan0");
 };
 
 export const scanNetworks = async (req: Request, res: Response) => {
