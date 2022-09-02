@@ -121,8 +121,10 @@ export const scanNetworks = async (req: Request, res: Response) => {
   //   res.json(networks);
   // });
 
-  const networks = fs.readFileSync(scannedWifiNetworksPath).toJSON().data;
-  console.log(networks);
+  const networks = JSON.parse(
+    fs.readFileSync(scannedWifiNetworksPath).toString()
+  );
+
   res.json(networks);
 };
 
