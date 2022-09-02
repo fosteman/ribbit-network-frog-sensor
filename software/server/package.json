@@ -28,5 +28,5 @@
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/index.js\"",
     "build_all": "npm i && npm run build && cd dashboard && npm i && npm run build"
   },
-  "version": "0.0.10"
+  "version": "0.0.11"
 }

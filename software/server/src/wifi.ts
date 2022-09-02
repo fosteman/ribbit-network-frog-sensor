@@ -90,6 +90,7 @@ export const scanNetworksOffline = () => {
     if (networks?.length && !error) {
       console.log(`Found ${networks.length} networks, saving...`);
       fs.writeFileSync(scannedWifiNetworksPath, networks);
+      console.log(fs.readFileSync(scannedWifiNetworksPath));
       return networks;
     } else {
       new Error("Nothing scanned");

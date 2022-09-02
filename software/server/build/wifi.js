@@ -138,6 +138,7 @@ var scanNetworksOffline = function () {
         if ((networks === null || networks === void 0 ? void 0 : networks.length) && !error) {
             console.log("Found ".concat(networks.length, " networks, saving..."));
             fs.writeFileSync(scannedWifiNetworksPath, networks);
+            console.log(fs.readFileSync(scannedWifiNetworksPath));
             return networks;
         }
         else {
