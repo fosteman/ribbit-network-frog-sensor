@@ -151,6 +151,7 @@ var scanNetworks = function (req, res) { return __awaiter(void 0, void 0, void 0
         res.setHeader("Access-Control-Allow-Origin", "*");
         console.log("[WIFI] /scanNetworks");
         networks = fs.readFileSync(scannedWifiNetworksPath).toJSON();
+        console.log(networks);
         res.json(networks);
         return [2 /*return*/];
     });
