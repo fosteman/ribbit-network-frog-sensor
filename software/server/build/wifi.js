@@ -134,7 +134,7 @@ var restartInterface = function () {
 var scanNetworksOffline = function () {
     console.log("Scanning wifi networks...");
     wifi.scan(function (error, networks) {
-        if (networks.length && !error) {
+        if ((networks === null || networks === void 0 ? void 0 : networks.length) && !error) {
             console.log("Found ".concat(networks.length, " networks, saving..."));
             fs.writeFileSync("scannedWifiNetworks.json", networks);
             return networks;
